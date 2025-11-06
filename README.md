@@ -49,7 +49,7 @@ Before you begin, ensure you have the following installed:
 
 If you have the project in a Git repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/Arhamjaved27/CodeAlpha_LibreTranslateApp.git
 cd translate-app
 ```
 
