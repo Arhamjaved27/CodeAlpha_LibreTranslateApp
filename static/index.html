@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Language Translation Tool</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Language Translation Tool</h1>
+    <section class="controls">
+      <div class="field">
+        <label for="sourceLang">Source</label>
+        <select id="sourceLang"></select>
+      </div>
+      <div class="field">
+        <label for="targetLang">Target</label>
+        <select id="targetLang"></select>
+      </div>
+    </section>
+
+    <section class="input-section">
+      <label for="inputText" class="sr-only">Text to translate</label>
+      <textarea id="inputText" rows="6" placeholder="Enter text to translate..."></textarea>
+      <button id="translateBtn" class="primary">Translate</button>
+    </section>
+
+    <section class="output-section">
+      <div class="output-header">
+        <h2>Translated Text</h2>
+        <button id="copyBtn" class="secondary">Copy</button>
+      </div>
+      <pre id="outputText" class="output" aria-live="polite"></pre>
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script defer src="/static/app.js"></script>
+</body>
+<style>
+  /* Minimal inline fallback if CSS fails to load */
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+</style>
+</html>
+
+
