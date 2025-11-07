@@ -10,7 +10,6 @@ from pydantic import BaseModel
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
 
@@ -26,7 +25,6 @@ class TranslateRequest(BaseModel):
 
 app = FastAPI(title="Language Translation Tool")
 
-# Enable CORS broadly to simplify local dev and possible static hosting scenarios
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -35,7 +33,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Serve static files (CSS/JS)
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 
@@ -61,7 +58,6 @@ async def translate(req: TranslateRequest):
     base_url = os.getenv("LIBRETRANSLATE_URL", "https://libretranslate.com")
     translate_url = base_url.rstrip("/") + "/translate"
     
-    # Get API key from environment (optional, for self-hosted instances)
     api_key = os.getenv("LIBRETRANSLATE_API_KEY", "")
 
     payload = {
@@ -71,7 +67,6 @@ async def translate(req: TranslateRequest):
         "format": "text",
     }
     
-    # Add API key if provided
     if api_key:
         payload["api_key"] = api_key
 
@@ -83,7 +78,6 @@ async def translate(req: TranslateRequest):
             raise HTTPException(status_code=502, detail=f"Translation service error: {exc}")
 
     if resp.status_code != 200:
-        # Try to provide upstream error details when possible
         try:
             err_json = resp.json()
         except Exception:

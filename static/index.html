@@ -3,12 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Language Translation Tool</title>
+  <title>Language Translation Tool Build by Arham</title>
   <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script>
+    // Initialize theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    // Theme toggle function
+    function toggleTheme() {
+      const root = document.documentElement;
+      const currentTheme = root.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+  </script>
 </head>
 <body>
+  <header class="site-header">
+    <div class="logo">Arham Lab</div>
+    <div class="theme-toggle">
+      <button id="themeToggle" class="theme-toggle-btn" onclick="toggleTheme()">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
   <main class="container">
-    <h1>Language Translation Tool</h1>
+    <h1>Language Translation Tool Build by Arham</h1>
     <section class="controls">
       <div class="field">
         <label for="sourceLang">Source</label>
@@ -36,12 +61,28 @@
     </section>
   </main>
 
-  <script defer src="/static/app.js"></script>
+  <footer class="site-footer">
+    <div class="social-links">
+      <a href="https://www.instagram.com/arhamlab_" target="_blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/meetarham" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/Arhamjaved27" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.youtube.com/@ArhamJaved-867" target="_blank" title="YouTube">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </div>
+  </footer>
+  <script src="/static/app.js"></script>x
+
 </body>
-<style>
-  /* Minimal inline fallback if CSS fails to load */
+<!-- <style>
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-</style>
+</style> -->
 </html>
 
 

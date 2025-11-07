@@ -9,13 +9,28 @@
   --warn: #f5a524;
   --error: #e23d3d;
   --border: #2a2f45;
+  --header-bg: #141e47;
+  --footer-bg: #141e47;
+}
+
+:root[data-theme="light"] {
+  --bg: #f0f2f5;
+  --panel: #ffffff;
+  --text: #1a1a1a;
+  --muted: #666666;
+  --primary: #5865f2;
+  --primary-600: #4752c4;
+  --border: #e0e0e0;
+  --header-bg: #ffffff;
+  --footer-bg: #ffffff;
 }
 
 * { box-sizing: border-box; }
 
-html, body { height: 100%; }
+/* html{ height: 100vh; } */
 
 body {
+  height: 88vh;
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   background: radial-gradient(1200px 600px at 20% -10%, #1a2040 0%, var(--bg) 60%), var(--bg);
@@ -23,8 +38,9 @@ body {
 }
 
 .container {
+  /* height: 70vh; */
   max-width: 920px;
-  margin: 40px auto;
+  margin: 100px auto 80px;
   padding: 24px;
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
   border: 1px solid var(--border);
@@ -53,7 +69,11 @@ h1 {
   color: var(--text);
 }
 
-.input-section { margin-top: 16px; display: grid; gap: 12px; }
+.input-section { 
+  margin-top: 16px; 
+  display: grid; 
+  gap: 12px; 
+}
 
 textarea {
   width: 100%;
@@ -66,6 +86,10 @@ textarea {
   color: var(--text);
 }
 
+
+#sourceLang{
+  transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
+}
 button {
   display: inline-flex;
   align-items: center;
@@ -78,16 +102,125 @@ button {
   transition: background .15s ease, transform .02s ease;
 }
 
-button.primary { background: var(--primary); color: #fff; }
-button.primary:hover { background: var(--primary-600); }
-button.primary:disabled { opacity: .7; cursor: default; }
+button.primary { 
+  background: var(--primary); 
+  color: #fff; 
+}
+button.primary:hover { 
+  background: var(--primary-600); 
+}
+button.primary:disabled { 
+  opacity: .7; 
+  cursor: default; 
+}
 
-button.secondary { background: transparent; color: var(--text); border-color: var(--border); }
-button.secondary:hover { background: rgba(255,255,255,0.04); }
+button.secondary { 
+  background: transparent; 
+  color: var(--text); 
+  border-color: var(--border); 
+}
 
-.output-section { margin-top: 24px; }
-.output-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.output-header h2 { margin: 0; font-size: 1.1rem; color: var(--muted); font-weight: 600; }
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--header-bg);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, var(--primary), #00c3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(0,0,0,0.1);
+}
+
+.theme-toggle-btn .fa-sun {
+  display: none;
+}
+
+.theme-toggle-btn .fa-moon {
+  display: inline-block;
+}
+
+[data-theme="light"] .theme-toggle-btn .fa-sun {
+  display: inline-block;
+}
+
+[data-theme="light"] .theme-toggle-btn .fa-moon {
+  display: none;
+}
+
+.site-footer {
+  height: 15vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--footer-bg);
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  color: var(--text);
+  font-size: 1.5rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+button.secondary:hover { 
+  background: rgba(255,255,255,0.04); 
+}
+
+.output-section { 
+  margin-top: 24px; 
+}
+.output-header { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 12px; 
+}
+.output-header h2 { 
+  margin: 0; 
+  font-size: 1.1rem; 
+  color: var(--muted); 
+  font-weight: 600;
+}
 
 .output {
   margin: 10px 0 0;

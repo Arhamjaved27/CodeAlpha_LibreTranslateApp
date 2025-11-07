@@ -100,6 +100,7 @@ This will install:
    ```bash
    docker run -d -p 5000:5000 --name libretranslate -e LT_API_KEYS=false libretranslate/libretranslate
    ```
+   
 
 2. **Or with API key** (for production):
    ```bash
